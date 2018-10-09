@@ -94,7 +94,21 @@ public class App {
 	// 6. Retorne uma lista com os títulos de todos os posts publicados no blog com título tituloBlog 
 	//entre o período dataInicial e dataFinal.
 	public List<String> questaoSeis(Date dataInicial, Date dataFinal, String tituloBlog) {
-		throw new UnsupportedOperationException();
+		helper.execute(Blog.class, streams->{
+			return streams.
+			.where(b -> b.getName().equals(tituloBlog))
+			
+			.collect(Collectors.toList())
+			.get(0)
+			.getPosts()
+			.stream()
+			.filter(p->p.getCreationDate().before(dataFinal)&&p.getCreationDate().after(dataInicial))
+			.map(p->p.getTitle())
+			
+			.collect(Collectors.toList())
+			;
+		});
+		
 	}
 
 	// 7. Imprima na tela a média de posts existentes nos blogs

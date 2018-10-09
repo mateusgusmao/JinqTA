@@ -72,7 +72,8 @@ public class App {
 			streams.
 				.where(p -> p.getTitle().equals(titulo))
 				.sortedBy(p -> p.getTitle())
-				.forEach(p -> System.out.println(p.getIdentifier() +  ", " + p.getCreationDate() + ", " +  p.getContent() + ", " +  p.getBlog().getName()));
+				.forEach(p -> System.out.println(p.getIdentifier() +  " , " + p.getCreationDate() + " , " +  p.getContent() + " , " +  p.getBlog().getName()));
+	         });
 	}
 
 	// 5. Imprima na tela o título do último post do blog com título "título"

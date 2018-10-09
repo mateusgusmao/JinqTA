@@ -11,6 +11,7 @@ import org.jinq.jpa.JinqJPAStreamProvider;
 
 import br.edu.ifpe.jpa.example.entities.Blog;
 import br.edu.ifpe.jpa.example.entities.Car;
+import java.util.stream.Collectors;
 
 public class App {
 	

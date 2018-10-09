@@ -68,14 +68,11 @@ public class App {
 	// 4. Imprima na tela o título e conteúdo de todos os posts do blog com título recebido como parâmetro, 
 	//ordenados alfabeticamente pelo título do post
 	public void questaoQuatro(String titulo) {
-		helper.execute(Blog.class, streams -> {
+		helper.execute(Post.class, streams -> {
 			streams.
-				.where(b -> b.getPosts().getTitle().equals(titulo))
-				.toList()
-				.getPosts()
-				.stream()
-				.forEach(p -> System.out.println(p.getTitle() + "\n" + p.getContent() + "\n"));
-		});
+				.where(p -> p.getTitle().equals(titulo))
+				.sortedBy(p -> p.getTitle())
+				.forEach(p -> System.out.println(p.getIdentifier() +  ", " + p.getCreationDate() + ", " +  p.getContent() + ", " +  p.getBlog().getName()));
 	}
 
 	// 5. Imprima na tela o título do último post do blog com título "título"
@@ -118,6 +115,9 @@ public class App {
 			streams.
 				.select(b -> b.getPosts())
 				.avg(b -> b.getPosts());
+			        .toList
+			        .stream()
+		                .forEach(System.out::println)
 		});
 
 	}
